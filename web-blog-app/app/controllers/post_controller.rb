@@ -1,4 +1,5 @@
 class PostController < ApplicationController
+  before_action :set_current_post, :set_post, only: %i[ show edit update destroy ]
   def index
     @post = Post.all
   end
@@ -10,23 +11,26 @@ class PostController < ApplicationController
   end
 
   def create
-    @post = Post.new(set_post)
+    @post = Post.new(set_post.merge(post_id: current_user.id))
     if @post.save
       redirect_to @post
     else
       render :new, status: :unprocessable_entity
- end
+    end
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    @post = set_current_post
     @post.destroy
 
     redirect_to root_path, status: :see_other
   end
 
   private
+  def set_current_post
+    Post.find(params[:id])
+  end
   def set_post
-    params.require(:post).permit(:title, :post_body, :source)
+    params.require(:post).permit(:title, :post_body, :source, :resource)
   end
 end
