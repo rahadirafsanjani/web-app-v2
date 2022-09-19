@@ -19,13 +19,17 @@ class CommentController < ApplicationController
   end
 
   def destroy
-    @comment = set_current_comment
     @comment.destroy
+  end
+
+  def update
+    @comment.update(set_comment)
+    redirect_to @comment
   end
 
   private
   def set_current_comment
-    Comment.find(params[:id])
+    @comment = Comment.find(params[:id])
   end
   def set_comment
     params.require(:comment).permit(:comment_body)

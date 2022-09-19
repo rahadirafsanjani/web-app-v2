@@ -20,15 +20,21 @@ class PostController < ApplicationController
   end
 
   def destroy
-    @post = set_current_post
     @post.destroy
-
     redirect_to root_path, status: :see_other
+  end
+
+  def update
+    if @post.update(set_post)
+      redirect_to @post
+    else
+      render status: :unprocessable_entity
+    end
   end
 
   private
   def set_current_post
-    Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
   def set_post
     params.require(:post).permit(:title, :post_body, :source, :resource)
