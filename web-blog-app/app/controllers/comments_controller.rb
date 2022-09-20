@@ -1,5 +1,5 @@
-class CommentController < ApplicationController
-  before_action :set_current_comment, :set_comment, only: %i[ show edit update destroy ]
+class CommentsController < ApplicationController
+  before_action :set_comment, only: %i[ show edit update destroy ]
   def index
     @comment = Comment.all
   end

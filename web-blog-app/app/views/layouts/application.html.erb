@@ -11,14 +11,25 @@
   </head>
 
   <body>
-  <div>
+    <%= render 'home/header'%>
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
-    <%= yield %>
-  </div>
+    <section class="hero is-halfheight">
+      <div class="hero-body">
+        <div class="">
+          <p class="title">
+            wellcome :)
+          </p>
+          <p class="subtitle">
+            <%#= current_user.id %>
+            <%= yield %>
+          </p>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
