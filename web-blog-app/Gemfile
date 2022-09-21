@@ -60,10 +60,6 @@ group :development, :test do
   gem 'pry'
 end
 
-group :test do
-  gem  'rspec-rails'
-end
-
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
@@ -80,6 +76,11 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'cucumber-rails', require: false
+  # database_cleaner is not mandatory, but highly recommended
+  gem 'database_cleaner'
+  # rspec
+  # gem  'rspec-rails'
 end
 
 gem "devise", "~> 4.8"
