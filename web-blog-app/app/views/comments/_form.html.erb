@@ -1,0 +1,5 @@
+<%= form_with(model: @comment, :url => post_comments_path(@post)) do |f| %>
+  <%= f.label :comment_body, "comment here" %>
+  <%= f.text_area :comment_body, class: "form-control"%>
+  <%= f.submit 'Leave Commaent' %>
+<% end %>

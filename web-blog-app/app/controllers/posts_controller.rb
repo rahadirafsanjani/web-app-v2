@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ create update ]
-  before_action :set_current_post, only: %i[ edit show destroy ]
+  before_action :set_current_post, only: %i[ edit update show destroy ]
   def index
     @posts = Post.all
   end
@@ -13,6 +13,9 @@ class PostsController < ApplicationController
     @post_last =Post.last
     @post_by_id = Post.order(:id)
     # @post_by_created_at = Post.sort_by(&:created_at)
+    # @comment = @post.comments.build
+
+    @comment = Comment.new
   end
 
   def create

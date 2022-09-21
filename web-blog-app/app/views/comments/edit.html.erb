@@ -1,0 +1,8 @@
+<h1>Editing post</h1>
+
+<%= form_with(model: @comment, method: :put, :url => edit_comment_path ) do |f| %>
+  <%= f.label :comment_body, "comment here" %>
+  <%= f.text_area :comment_body, class: "form-control"%>
+  <%= f.submit 'Leave Commaent' %>
+<% end %>
+
