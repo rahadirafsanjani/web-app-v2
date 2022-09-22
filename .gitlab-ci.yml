@@ -6,4 +6,4 @@ staging :
     - curl https://cli-assets.heroku.com/install.sh | sh
     - heroku run rails db:migrate --exit-code --app $APP_NAME
   only :
-    - master
+    - main
