@@ -2,26 +2,28 @@
   <div class="column is-two-thirds">
     <%= render @post %>
     <a>
+      <% if @post.user == current_user %>
       <%= link_to "Edit this posts", edit_post_path(@post), class: "" %> |
-      <%= link_to "Back to posts", posts_path, class: "" %>
+      <%= button_to "Destroy this posts", @post, method: :delete, class: "button is-danger" %>
+      <% end %>
     </a>
     <h5>
-      <%= button_to "Destroy this posts", @post, method: :delete, class: "button is-danger" %>
-      <%#= link_to 'Destroy this posts', destroy_comment_path(comment), class: "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure ?" } %>
+      <%= link_to "Back to posts", posts_path, class: "" %>
     </h5>
   </div>
 <!--  comment here-->
   <div class="column">
     <b>Comments</b>
     <br>
-    <%- @post.comments.each do |comment|%>
+    <% @post.comments.each do |comment|%>
       <%= comment.user.email %>
       <%= comment.created_at.strftime('%B, %d, %Y, %l:%M%P') %>
       <%= comment.comment_body %>
+      <% if @post.user == current_user %>
       <%= link_to 'edit comment', edit_comment_path(comment) %>
-      <%#= button_to "destroy", @post, method: :delete %>
       <%= link_to 'Delete', destroy_comment_path(comment), class: "is-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure ?" } %>
-
+      <% end %>
+      <%#= button_to "destroy", @post, method: :delete %>
       <br>
     <% end %>
     <%= render "comments/form", comment: @comment%>

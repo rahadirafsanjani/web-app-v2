@@ -45,9 +45,6 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-#simplecov
-gem 'simplecov', require: false, group: :test
-
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -83,5 +80,9 @@ group :test do
   # gem  'rspec-rails'
 end
 
+#authentification
 gem "devise", "~> 4.8"
+#authorization
 gem "letter_opener", group: :development
+#simplecov
+gem 'simplecov', require: false, group: :test

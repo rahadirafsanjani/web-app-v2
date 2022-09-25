@@ -8,9 +8,14 @@
 <div id="posts">
   <% @posts.each do |post| %>
     <%= render post %>
+    <p>Created by:</p>
+    <%= post.user.email %>
+    <P>Posted on :</P>
+    <%= post.created_at.strftime('%B, %d, %Y, %l:%M%P') %>
     <p>
       <%= link_to "Show this posts", post %>
     </p>
+    <br/>
   <% end %>
 
 </div>
