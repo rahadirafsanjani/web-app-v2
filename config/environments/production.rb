@@ -2,13 +2,13 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # manual setup for SMTP MAILER
-  config.action_mailer.default_url_options = {host: "https://web-blog-rafa.herokuapp.com", protocol: "https"}
+  config.action_mailer.default_url_options = {host: "https://web-blog-app-qtrs.herokuapp.com", protocol: "https"}
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
-    domain:               'https://web-blog-rafa.herokuapp.com/',
+    domain:               'https://web-blog-app-qtrs.herokuapp.com/',
     user_name:            Rails.application.credentials.dig(:google_smtp, :email),
     password:             Rails.application.credentials.dig(:google_smtp, :password),
     authentication:       'plain',
